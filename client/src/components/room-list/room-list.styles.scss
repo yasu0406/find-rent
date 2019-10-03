@@ -1,0 +1,10 @@
+section {
+    ul li {
+        a {
+            color: #212529;
+            &:hover {
+                color: unset;
+            }
+        }
+    }
+}

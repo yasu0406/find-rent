@@ -1,0 +1,11 @@
+.main-visual {
+    height: 500px;
+    padding-top: 100px;
+    background: url("/images/mv-home.jpg") center;
+    background-size: cover;
+    .contact-form {
+        max-width: 400px;
+        padding: 50px;
+        background-color: white;
+    }
+}

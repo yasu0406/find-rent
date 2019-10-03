@@ -1,0 +1,4 @@
+export const ActionType = {
+  FETCH_CATEGORY_POSTS: 'FETCH_CATEGORY_POSTS',
+  FETCH_TOP_POSTS: 'FETCH_TOP_POSTS',
+};

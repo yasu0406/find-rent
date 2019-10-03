@@ -1,0 +1,30 @@
+.post-form {
+    .modal-content {
+        max-width: 800px;
+    }
+    label {
+        margin-bottom: 5px;
+    }
+    .description-area {
+        textarea {
+            min-height: 100px;
+        }
+    }
+    .input-list {
+        > li {
+            margin-bottom: 20px;
+            > ul li {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .form-check {
+        .radio-title {
+            margin-left: -1.25rem;
+        } 
+        label {
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+    }
+}
