@@ -9,3 +9,19 @@
         background-color: white;
     }
 }
+section {
+    li {
+        margin-bottom: 30px;
+        h3 {
+            margin: 5px 0;
+        }
+    }
+    .thumb-nail {
+        height: 200px;
+        margin-bottom: 10px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+    }
+}

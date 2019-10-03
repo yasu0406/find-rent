@@ -27,6 +27,8 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #707070;
+	font-weight: normal;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -44,10 +46,13 @@ h1 {
 	font-size: 2.8rem;
 }
 h2 {
-	font-size: 2.8rem;
+	font-size: 2.6rem;
 }
 h3 {
-	font-size: 2.4rem;
+	font-size: 2.2rem;
+}
+h1, h2 {
+	font-weight: bold;	
 }
 p {
 	font-size: 1.6rem;
@@ -63,6 +68,9 @@ a {
 		opacity: 0.8;
 		text-decoration: none;
 	}
+}
+i {
+	color: white;
 }
 button:hover {
 	opacity: 0.8;
@@ -81,6 +89,9 @@ table {
 }
 img {
 	width: 100%;
+}
+.container {
+	max-width: 1088px;
 }
 .base-input,
 .form-control {

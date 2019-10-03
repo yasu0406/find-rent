@@ -13,20 +13,8 @@ module.exports = app => {
     app.post('/api/post', (request, response) => {
       const {title, area, describe, price, available, roomSize, roomType, bath, availableSmoke, landry, parking, pet, img1, img2, img3, img4, img5, userInfo} = request.body.roomInfo;
       const {userId, userName, userEmail} = userInfo;
-
-
-
-      // var storage = multer.diskStorage({
-      //   destination: function (req, img, cb) {
-      //     cb(null, 'uploads')
-      //   },
-      //   filename: function (req, img, cb) {
-      //     cb(null, file.fieldname + '-' + Date.now())
-      //   }
-      // })
-       
-      // var upload = multer({ storage: storage })
-
+      const url = title;
+      url.replace(/\s+/g, "");
       const room = new Room({
         atDate: new Date(),
         title,

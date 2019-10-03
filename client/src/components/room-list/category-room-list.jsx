@@ -4,7 +4,7 @@ import AreaRoomList from './arearoom-list';
 
 const CategoryRoomList = (props) => {
   return(
-    <section class="contaier">
+    <section className="contaier">
       <h2 className='mb-3'>Downtown</h2>
       <ul className='row mb-5'>
         <AreaRoomList area={props.area} listNum={15}/>
