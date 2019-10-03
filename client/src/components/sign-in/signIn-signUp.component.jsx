@@ -34,7 +34,7 @@ const SignIn = ({onCancel, showName}) => {
             }
             );
         } catch (error) {
-          console.log(error);
+          console.log(error.message);
         }
       };
 
@@ -61,7 +61,7 @@ const SignIn = ({onCancel, showName}) => {
                 displayName:'',
           })  ;
         } catch (error) {
-          console.log(error);
+          console.log(error.message);
         }
       };
 
@@ -72,7 +72,7 @@ const SignIn = ({onCancel, showName}) => {
             await auth.sendPasswordResetEmail(confrimEmail);
             alert('Send your email address');
         } catch(error) {
-            console.log(error);
+            console.log(error.message);
         }
       }
     
