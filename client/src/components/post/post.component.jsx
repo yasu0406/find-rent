@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
 import {submitRoom} from '../../redux/rooms/rooms.action';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import FileBase from 'react-file-base64';
 
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 
 import './post.styles.scss';
 
@@ -26,11 +26,11 @@ const Post= ({onCancel, user, submitRoom}) => {
         landry: '',
         parking: true,
         pet: false,
-        img1: '',
-        img2: '',
-        img3: '',
-        img4: '',
-        img5: '',
+        img1: `${process.env.PUBLIC_URL}/images/default-img.png`,
+        img2: `${process.env.PUBLIC_URL}/images/default-img.png`,
+        img3: `${process.env.PUBLIC_URL}/images/default-img.png`,
+        img4: `${process.env.PUBLIC_URL}/images/default-img.png`,
+        img5: `${process.env.PUBLIC_URL}/images/default-img.png`,
         userInfo: {
             userId: user.id,
             userName: user.displayName,
@@ -39,7 +39,6 @@ const Post= ({onCancel, user, submitRoom}) => {
     });
     const postHandleSubmit = event => {
         event.preventDefault();
-        console.log(roomInfo);
         submitRoom(roomInfo, onCancel);
     };    
     const handleInput = () => {
@@ -65,13 +64,13 @@ const Post= ({onCancel, user, submitRoom}) => {
         setRoomInfo({...roomInfo, [name]: value });
     };
     return (
-        <div id="myModal" className="modal-form post-form">
-            <div className="modal-content">
-                <span className="close mb-5" onClick={onCancel}>&times;</span>
+        <div id='myModal' className='modal-form post-form'>
+            <div className='modal-content'>
+                <span className='close mb-5' onClick={onCancel}>&times;</span>
                 <form onSubmit={postHandleSubmit}>
                     <ul className='mb-5 row'>
                         <li className='col-md-8'>
-                            <label htmlFor="title">Room Name</label>
+                            <h3><label htmlFor='title'>Room Name*</label></h3>
                             <FormInput
                                 id='title'
                                 name='title'
@@ -83,43 +82,75 @@ const Post= ({onCancel, user, submitRoom}) => {
                             />
                         </li>
                         <li className='col-md-4'>
-                            <label htmlFor="area">Area</label>
+                            <h3><label htmlFor='area'>Area*</label></h3>
                             <select
-                                name="area" 
-                                id="area"
+                                name='area' 
+                                id='area'
                                 className='form-control'
                                 onChange={handleChange}
                                 value={roomInfo.address}
                                 required 
                                 >
-                                <option value="select">Select</option>
-                                <option value="Downtown">Downtown</option>
-                                <option value="Robson">Robson</option> 
+                                <option value='select'>Select</option>
+                                <option value='Downtown'>Downtown</option>
+                                <option value='Robson'>Robson</option> 
                             </select>
                         </li>
                     </ul>   
                     <div className='description-area'>
-                        <label htmlFor="describe">Describe</label>
+                        <h3><label htmlFor='describe'>Describe*</label></h3>
                         <textarea 
                             id='describe'
                             className='col-12 form-control' 
                             name='describe'
                             value={roomInfo.describe}
                             onChange={handleChange}
+                            required
                         />
                     </div> 
-                    <ul className='row'>
-                        <li className='col-md-2'><img src={roomInfo.img1} alt="upload-image" className="process__image" /><FileBase type="file" name='img1' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img1:files.base64.toString()})}} /></li>
-                        <li className='col-md-2'><img src={roomInfo.img2} alt="upload-image" className="process__image" /><FileBase type="file" name='img2' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img2:files.base64.toString()})}} /></li>
-                        <li className='col-md-2'><img src={roomInfo.img3} alt="upload-image" className="process__image" /><FileBase type="file" name='img2' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img3:files.base64.toString()})}} /></li>
-                        <li className='col-md-2'><img src={roomInfo.img4} alt="upload-image" className="process__image" /><FileBase type="file" name='img2' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img4:files.base64.toString()})}} /></li>
-                        <li className='col-md-2'><img src={roomInfo.img5} alt="upload-image" className="process__image" /><FileBase type="file" name='img2' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img5:files.base64.toString()})}} /></li>
+                    <ul className='row mt-5 mb-5'>
+                        <li className='col-md-4'> 
+                             <img src={roomInfo.img1} alt='upload-image' className='process__image' />
+                             <div className='custom-file'>
+                                <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img1:files.base64.toString()})}} />
+                                <label className='custom-file-label' htmlFor='customFile01'>Choose file</label>
+                             </div>
+                        </li>
+                        <li className='col-md-4'> 
+                             <img src={roomInfo.img2} alt='upload-image' className='process__image' />
+                             <div className='custom-file'>
+                                <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img2:files.base64.toString()})}} />
+                                <label className='custom-file-label' htmlFor='customFile03'>Choose file</label>
+                             </div>
+                        </li>
+                        <li className='col-md-4'> 
+                             <img src={roomInfo.img3} alt='upload-image' className='process__image' />
+                             <div className='custom-file'>
+                                <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img3:files.base64.toString()})}} />
+                                <label className='custom-file-label' htmlFor='customFile04'>Choose file</label>
+                             </div>
+                        </li>
+                        <li className='col-md-4'> 
+                             <img src={roomInfo.img4} alt='upload-image' className='process__image' />
+                             <div className='custom-file'>
+                                <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img4:files.base64.toString()})}} />
+                                <label className='custom-file-label' htmlFor='customFile'>Choose file</label>
+                             </div>
+                        </li>
+                        <li className='col-md-4'> 
+                             <img src={roomInfo.img5} alt='upload-image' className='process__image' />
+                             <div className='custom-file'>
+                                <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img5:files.base64.toString()})}} />
+                                <label className='custom-file-label' htmlFor='customFile'>Choose file</label>
+                             </div>
+                        </li>
+                        
                     </ul>
                     <ul className='row mt-5'>
                         <li className='col-md-3'>
                             <ul className='input-list'>
                                 <li>
-                                    <label htmlFor="price">price</label>
+                                    <h3><label htmlFor='price'>Price*</label></h3>
                                     <FormInput
                                     id='price'
                                     name='price'
@@ -131,7 +162,7 @@ const Post= ({onCancel, user, submitRoom}) => {
                                 />
                                 </li>
                                 <li>
-                                    <label htmlFor="roomSize">Room Size</label>
+                                    <h3><label htmlFor='roomSize'>Room Size*</label></h3>
                                     <FormInput
                                         id='roomSize'
                                         name='roomSize'
@@ -143,7 +174,7 @@ const Post= ({onCancel, user, submitRoom}) => {
                                     />
                                 </li>
                                 <li>
-                                      <label htmlFor="available-date">Available Date</label>  
+                                    <h3><label htmlFor='available-date'>Available Date*</label></h3>
                                       <DatePicker
                                         id='available-date'
                                         name='available'
@@ -152,73 +183,8 @@ const Post= ({onCancel, user, submitRoom}) => {
                                         required 
                                     />
                                 </li>
-                            </ul>
-                        </li>
-                        <li className='col-md-2'>
-                            <ul className='input-list'>
-                                <li className='form-check'>
-                                    <ul>
-                                        <li className='radio-title'>Room type*</li>
-                                        <li>
-                                            <input className="form-check-input" type="radio" name="roomType" id="privateRoom" value='privateRoom' checked={roomInfo.roomType === 'privateRoom'} onChange={handleChange} />
-                                            <label className="form-check-label" htmlFor="privateRoom">
-                                                Private room
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input className="form-check-input" type="radio" name="roomType" id="shareRoom" value='shareRoom' checked={roomInfo.roomType === 'shareRoom'} onChange={handleChange} />
-                                            <label className="form-check-label" htmlFor="shareRoom">
-                                                Share room
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className='form-check'>
-                                    <ul>
-                                        <li className='radio-title'>Bath*</li>
-                                        <li>
-                                            <input className="form-check-input" type="radio" name="bath" id="share" value='share' checked={roomInfo.bath === 'share'} onChange={handleChange} />
-                                            <label className="form-check-label" htmlFor="share">
-                                                Share
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input className="form-check-input" type="radio" name="bath" id="private" value='private' checked={roomInfo.bath === 'private'} onChange={handleChange} />
-                                            <label className="form-check-label" htmlFor="private">
-                                                Private
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input className="form-check-input" type="radio" name="bath" id="others" value='others' checked={roomInfo.bath === 'others'} onChange={handleChange} />
-                                            <label className="form-check-label" htmlFor="others">
-                                                Others
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className='form-check'>
-                                    <ul>
-                                        <li className='radio-title'>Smoke</li>
-                                        <li>
-                                            <input className="form-check-input" type="radio" name="availableSmoke" id="smoke" value='true' checked={roomInfo.availableSmoke === true} onChange={handleChange} />
-                                            <label className="form-check-label" htmlFor="smoke">
-                                                Yes
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input className="form-check-input" type="radio" name="availableSmoke" id="no-smoke" value='false' checked={roomInfo.availableSmoke === false} onChange={handleChange} />
-                                            <label className="form-check-label" htmlFor="no-smoke">
-                                                No
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className='col-md-2'>
-                            <ul className='input-list'>
                                 <li>
-                                    <label htmlFor="landry">Landry*</label>
+                                    <h3><label htmlFor='landry'>Landry*</label></h3>
                                     <FormInput
                                         name='landry'
                                         type='text'
@@ -228,18 +194,163 @@ const Post= ({onCancel, user, submitRoom}) => {
                                         required 
                                     />
                                 </li>
+                            </ul>
+                        </li>
+                        <li className='col-md-2'>
+                            <ul className='input-list'>
                                 <li className='form-check'>
                                     <ul>
-                                        <li className='radio-title'>Parking*</li>
+                                        <li className='radio-title'><h3>Room type*</h3></li>
                                         <li>
-                                            <input className="form-check-input" type="radio" name="parking" id="parking" value='true' checked={roomInfo.parking === true} onChange={handleChange} />
-                                            <label className="form-check-label" htmlFor="parking">
+                                            <input 
+                                                className='form-check-input'
+                                                type='radio' name='roomType' 
+                                                id='privateRoom' 
+                                                value='privateRoom' 
+                                                checked={roomInfo.roomType === 'privateRoom'} 
+                                                onChange={handleChange} 
+                                                required 
+                                             />
+                                            <label className='form-check-label' htmlFor='privateRoom'>
+                                                Private room
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input 
+                                                className='form-check-input' 
+                                                type='radio' 
+                                                name='roomType' 
+                                                id='shareRoom' 
+                                                value='shareRoom' 
+                                                checked={roomInfo.roomType === 'shareRoom'} 
+                                                onChange={handleChange} 
+                                                required 
+                                            />
+                                            <label className='form-check-label' htmlFor='shareRoom'>
+                                                Share room
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li className='form-check'>
+                                    <ul>
+                                        <li className='radio-title'><h3>Bath*</h3></li>
+                                        <li>
+                                            <input 
+                                                className='form-check-input' 
+                                                type='radio' 
+                                                name='bath' 
+                                                id='share' 
+                                                value='share' 
+                                                checked={roomInfo.bath === 'share'} 
+                                                onChange={handleChange} 
+                                                required 
+                                            />
+                                            <label className='form-check-label' htmlFor='share'>
+                                                Share
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input 
+                                                className='form-check-input' 
+                                                type='radio' 
+                                                name='bath' 
+                                                id='private' 
+                                                value='private' 
+                                                checked={roomInfo.bath === 'private'} 
+                                                onChange={handleChange} 
+                                                required 
+                                            />
+                                            <label className='form-check-label' htmlFor='private'>
+                                                Private
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input 
+                                                className='form-check-input' 
+                                                type='radio' 
+                                                name='bath' 
+                                                id='others' 
+                                                value='others' 
+                                                checked={roomInfo.bath === 'others'} 
+                                                onChange={handleChange} 
+                                                required 
+                                            />
+                                            <label className='form-check-label' htmlFor='others'>
+                                                Others
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className='col-md-2'>
+                            <ul className='input-list'>
+                                <li className='form-check'>
+                                    <ul>
+                                        <li className='radio-title'><h3>Smoke*</h3></li>
+                                        <li>
+                                            <input 
+                                                className='form-check-input' 
+                                                type='radio' 
+                                                name='availableSmoke' 
+                                                id='smoke' 
+                                                value='true' 
+                                                checked={roomInfo.availableSmoke === true} 
+                                                onChange={handleChange} 
+                                                required 
+                                            />
+                                            <label className='form-check-label' htmlFor='smoke'>
                                                 Yes
                                             </label>
                                         </li>
                                         <li>
-                                            <input className="form-check-input" type="radio" name="parking" id="no-parking" value='false' checked={roomInfo.parking === false} onChange={handleChange} />
-                                            <label className="form-check-label" htmlFor="no-parking">
+                                            <input 
+                                                className='form-check-input' 
+                                                type='radio' 
+                                                name='availableSmoke' 
+                                                id='no-smoke' 
+                                                value='false' 
+                                                checked={roomInfo.availableSmoke === false} 
+                                                onChange={handleChange} 
+                                                required 
+                                            />
+                                            <label className='form-check-label' htmlFor='no-smoke'>
+                                                No
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li className='form-check'>
+                                    <ul>
+                                        <li className='radio-title'><h3>Parking*</h3></li>
+                                        <li>
+                                            <input 
+                                                className='form-check-input' 
+                                                type='radio' 
+                                                name='parking' 
+                                                id='parking' 
+                                                value='true' 
+                                                checked={roomInfo.parking === true} 
+                                                onChange={handleChange} 
+                                                required 
+                                            />
+                                            <label className='form-check-label' htmlFor='parking'>
+                                                Yes
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input 
+                                                className='form-check-input' 
+                                                type='radio' 
+                                                name='parking' 
+                                                id='no-parking' 
+                                                value='false' 
+                                                checked={roomInfo.parking === false} 
+                                                onChange={handleChange} 
+                                                required 
+                                            />
+                                            <label className='form-check-label' htmlFor='no-parking'>
                                                 No
                                             </label>
                                         </li>
@@ -248,13 +359,13 @@ const Post= ({onCancel, user, submitRoom}) => {
                             </ul>
                         </li>
                         <li className='col-md-5'>
-                            Option
+                            <h3>Option</h3>
                             <ul>
                                 <li>
                                     Pet:
                                     <input
-                                        name="pet"
-                                        type="checkbox"
+                                        name='pet'
+                                        type='checkbox'
                                         value='true'
                                         checked={roomInfo.pet === true}
                                         onChange={handleInput} />
@@ -262,7 +373,7 @@ const Post= ({onCancel, user, submitRoom}) => {
                             </ul>
                         </li>
                     </ul>
-                    <CustomButton type="submit">Post</CustomButton> 
+                    <CustomButton type='submit'>Post</CustomButton> 
                 </form>
             </div>
         </div>
