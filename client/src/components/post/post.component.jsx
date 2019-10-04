@@ -12,7 +12,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './post.styles.scss';
 
 const Post= ({onCancel, user, submitRoom}) => {
-    const [test, setTest] = useState([]);
     const [roomInfo, setRoomInfo] = useState({
         title:'',
         area:'',
@@ -55,7 +54,6 @@ const Post= ({onCancel, user, submitRoom}) => {
     };
     const handleChange = event => {
         let { value, name } = event.target;
-        setTest([...test,{value}]);
         if(value === 'true') {
             value = true;
         } else if(value === 'false') {
@@ -181,6 +179,7 @@ const Post= ({onCancel, user, submitRoom}) => {
                                         selected={roomInfo.available}
                                         onChange={handleDate}
                                         required 
+                                        className='form-control'
                                     />
                                 </li>
                                 <li>
@@ -359,7 +358,7 @@ const Post= ({onCancel, user, submitRoom}) => {
                             </ul>
                         </li>
                         <li className='col-md-5'>
-                            <h3>Option</h3>
+                            <h3>Options</h3>
                             <ul>
                                 <li>
                                     Pet:
@@ -384,4 +383,5 @@ export default connect(
     null,
     {
         submitRoom
-    })(withRouter(Post));
+    }
+)(withRouter(Post));
