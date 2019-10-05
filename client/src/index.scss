@@ -50,7 +50,7 @@ h2 {
 	margin-bottom: 1.4rem;
 }
 h3 {
-	font-size: 2.2rem;
+	font-size: 2rem;
 	margin-bottom: 1rem;
 }
 h1, h2 {
@@ -92,8 +92,19 @@ table {
 img {
 	width: 100%;
 }
+/* no-gutters Class Rules */
+.row.no-gutters {
+	margin-right: 0;
+	margin-left: 0;
+ }
+ .row.no-gutters > [class^="col-"],
+ .row.no-gutters > [class*=" col-"] {
+	padding-right: 0;
+	padding-left: 0;
+ }
 .container {
 	max-width: 1088px;
+	margin: 0 auto;
 }
 .base-input,
 .form-control {
