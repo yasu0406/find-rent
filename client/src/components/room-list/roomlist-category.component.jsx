@@ -1,29 +1,37 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-import RoomList from './room-list';
 import { ftechRooms } from '../../redux/rooms/rooms.action';
 
+import RoomList from './room-list';
+import SideBar from '../side-bar/side-bar.component';
+
 const RoomListCategory = props => {
+  const chanedTitleChar = (categoryTitle) => {
+    if (!categoryTitle || typeof categoryTitle !== 'string') return categoryTitle;
+    return categoryTitle.charAt(0).toUpperCase() + categoryTitle.slice(1).toLowerCase();
+  };
   useEffect(() => {
     props.ftechRooms();
   },[]); 
 
   return (
     <>
-      <section className='mt-5 container'>
-        <h2>Downtown</h2>
-        <ul className='row mb-5'>
-            <RoomList areaCategoryName={props.areaCategoryName} />
-        </ul>
+      <section className='mt-5 row container'>
+        <div className='col-md-10'>
+          <h2>{chanedTitleChar(props.match.params.category)}</h2>
+          <ul className='row mb-5 room-list'>
+              <RoomList areaCategoryName={props.match.params.category} />
+          </ul>
+        </div>
+        <SideBar />
         </section>
     </>
   )
 }
 
 const mapStateToProps = state => {
-  console.log(state.rooms);
   return {
       rooms: state.rooms
   }
@@ -35,4 +43,4 @@ export default connect(
   {
       ftechRooms
   }
-)(RoomListCategory);
+)(withRouter(RoomListCategory));
