@@ -8,10 +8,14 @@ import CustomButton from '../../components/custom-button/custom-button.component
 import './home.styles.scss';
 
 const Home = props => {
-    const [areaCategoryName, setAreaCategoryName] = useState('');
+    const [areaCategoryName, setAreaCategoryName] = useState('all');
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.history.push(`category/${areaCategoryName}`);
+        setAreaCategoryName(e.target.value);
+        props.history.push(`/${areaCategoryName}`);
+    }
+    const handleChange = (e) => {
+        setAreaCategoryName(e.target.value);
     }
     return (
         <>
@@ -27,11 +31,12 @@ const Home = props => {
                             className="form-control" 
                             id="exampleFormControlSelect1"
                             value={areaCategoryName} 
-                            onChange={e => setAreaCategoryName(e.target.value) }
+                            onChange={handleChange}
                            >
-                            <option value="downtown">DOWNTOWN</option>
-                            <option value="robson">ROBSON</option>
-                            <option value="westend">WESTEND</option>
+                            <option value="all">All</option>
+                            <option value="downtown">Downtown</option>
+                            <option value="robson">Robson</option>
+                            <option value="westend">Westend</option>
                         </select>
                     </div>
                     <CustomButton type='submit' className='btn btn-danger'>Serach</CustomButton>
@@ -40,7 +45,7 @@ const Home = props => {
             </div>
         </div>
         <Route exact path='/' component={RoomListAllCategory} />
-        <Route exact path='/category/:category' component={() => <RoomListCategory areaCategoryName={areaCategoryName} />} />
+        <Route exact path='/:category' component={() => <RoomListCategory areaCategoryName={areaCategoryName} />} />
         </>
     );
 }
