@@ -17,7 +17,7 @@ const RoomListAllCategory = props => {
         <ul className='row mb-5'>
             <RoomList category='Downtown' />
         </ul>
-        <Link to='/category/downtown' className='btn btn-danger'>View</Link>
+        <Link to='/downtown' className='btn btn-danger'>View All</Link>
         </section>
 
       <section className='mt-5 container'>
@@ -25,22 +25,21 @@ const RoomListAllCategory = props => {
         <ul className='row mb-5'>
             <RoomList category='Robson' />
         </ul>
-        <button className='btn btn-danger'>View</button>
+        <Link to='/downtown' className='btn btn-danger'>View All</Link>
       </section>
 
       <section className='mt-5 container'>
-        <h2>Downtown</h2>
+        <h2>Westend</h2>
         <ul className='row mb-5'>
-            <RoomList category='downtown' />
+            <RoomList category='Westend' />
         </ul>
-        <button className='btn btn-danger'>View</button>
+        <Link to='/westend' className='btn btn-danger'>View All</Link>
       </section>
     </>
   )
 }
 
 const mapStateToProps = state => {
-  console.log(state.rooms);
   return {
       rooms: state.rooms
   }
