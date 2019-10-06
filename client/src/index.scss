@@ -92,6 +92,14 @@ table {
 img {
 	width: 100%;
 }
+body,.wrraper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.wrraper {
+	margin-bottom: 150px;
+}
 /* no-gutters Class Rules */
 .row.no-gutters {
 	margin-right: 0;
@@ -117,13 +125,20 @@ header a {
     text-decoration: none;
   }
 }
+.green-link {
+	color: #23824A;
+	font-weight: bold;
+	&:hover {
+		color: #23824A;
+	}
+}
 .btn {
-	max-width: 300px;
-	width: 100%;
-	height: 40px;
-	margin: 0 auto;
-	font-size: 1.6rem;
-	display: block;
+	max-width: 200px;
+    width: 100%;
+    padding: 5px 0;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    display: block;
 	&:hover {
 		opacity: 0.8;
 	} 
@@ -165,8 +180,8 @@ header a {
 		color: white;
 	}
 } 
-footer {
-	p {
-		color: white;
+@media screen and (max-width: 468px) {
+	.wrraper {
+		margin-top:50px;
 	}
 }
