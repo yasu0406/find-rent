@@ -19,6 +19,7 @@ const Post= ({onCancel, user, submitRoom}) => {
         price: 0,
         available: new Date(),
         roomSize: '',
+        houseType: 'shearhouse',
         roomType: 'privateRoom',
         bath: 'share',
         availableSmoke: true,
@@ -91,7 +92,8 @@ const Post= ({onCancel, user, submitRoom}) => {
                                 >
                                 <option value='select'>Select</option>
                                 <option value='Downtown'>Downtown</option>
-                                <option value='Robson'>Robson</option> 
+                                <option value='Robson'>Robson</option>
+                                <option value='Westend'>Westend</option> 
                             </select>
                         </li>
                     </ul>   
@@ -197,6 +199,41 @@ const Post= ({onCancel, user, submitRoom}) => {
                         </li>
                         <li className='col-md-2'>
                             <ul className='input-list'>
+                                <li className='form-check'>
+                                    <ul>
+                                        <li className='radio-title'><h3>Hose type*</h3></li>
+                                        <li>
+                                            <input 
+                                                className='form-check-input'
+                                                type='radio' 
+                                                name='houseType' 
+                                                id='shearhouse' 
+                                                value='shearhouse' 
+                                                checked={roomInfo.houseType === 'shearhouse'} 
+                                                onChange={handleChange} 
+                                                required 
+                                             />
+                                            <label className='form-check-label' htmlFor='shearhouse'>
+                                                Shear Hose
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input 
+                                                className='form-check-input' 
+                                                type='radio' 
+                                                name='houseType'
+                                                id='homestay' 
+                                                value='homestay' 
+                                                checked={roomInfo.houseType === 'homestay'} 
+                                                onChange={handleChange} 
+                                                required 
+                                            />
+                                            <label className='form-check-label' htmlFor='homestay'>
+                                                Home Stay
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li className='form-check'>
                                     <ul>
                                         <li className='radio-title'><h3>Room type*</h3></li>
