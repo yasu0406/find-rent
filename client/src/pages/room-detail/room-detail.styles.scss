@@ -1,0 +1,57 @@
+.carousel-wrap {
+    .carousel {
+        .slide {
+            div {
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                height: 600px;
+            }
+            img {
+                display: none;
+            }
+        }
+        .thumb.selected, .thumb:hover {
+            border: 3px solid #ED2E38;
+        }
+
+        .thumbs {
+            text-align: center;
+        }
+        .thumb {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 5px;
+            img {
+                height: 100px;
+                border-radius: 5px;
+            }
+        }
+        @media screen and (min-height: 1000px) {
+            .slide {
+                div {
+                    height: 800px;
+                }
+            }
+        }
+        @media screen and (max-width: 1024px) {
+            .slide {
+                div {
+                    height: 400px;
+                }
+            }
+        }
+        @media screen and (max-width:468px) {
+            .thumb {
+                max-width: 80px;
+                img {
+                    height: 60px;
+                }
+            }
+            .slide img {
+                width: auto;
+                height: 300px;
+            }
+        }
+    } 
+}
