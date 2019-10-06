@@ -9,6 +9,7 @@ const roomsSchema = new Schema({
     postal: String,
     describe: String,
     price: Number,
+    houseType: String,
     roomSize: String,
     roomType: String,
     bath: String,

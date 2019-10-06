@@ -11,6 +11,11 @@ const roomsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 rooms: action.payload
             };
+        case RoomActionTypes.FETCH_ROOMDETAIL:
+            return {
+                ...state,
+                roomDetail: action.payload
+            }    
          default:
              return state;   
     }
