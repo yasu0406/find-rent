@@ -1,10 +1,24 @@
 section {
-    ul li {
+    .room-list {
+        li {
+            margin-bottom: 30px;
+        }
+        h3 {
+            margin: 5px 0;
+        }
         a {
             color: #212529;
             &:hover {
                 color: unset;
             }
         }
+    }
+    .thumb-nail {
+        height: 200px;
+        margin-bottom: 10px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
     }
 }
