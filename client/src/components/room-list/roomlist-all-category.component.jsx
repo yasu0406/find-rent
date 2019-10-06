@@ -1,20 +1,15 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import RoomList from './room-list';
-import { ftechRooms } from '../../redux/rooms/rooms.action';
 
-const RoomListAllCategory = props => {
-  useEffect(() => {
-    props.ftechRooms();
-  },[]); 
+const RoomListAllCategory = () => {
 
   return (
     <>
       <section className='mt-5 container'>
         <h2>Downtown</h2>
-        <ul className='row mb-5'>
+        <ul className='row mb-5 room-list'>
             <RoomList category='Downtown' />
         </ul>
         <Link to='/downtown' className='btn btn-danger'>View All</Link>
@@ -22,7 +17,7 @@ const RoomListAllCategory = props => {
 
       <section className='mt-5 container'>
         <h2>Robson</h2>
-        <ul className='row mb-5'>
+        <ul className='row mb-5 room-list'>
             <RoomList category='Robson' />
         </ul>
         <Link to='/downtown' className='btn btn-danger'>View All</Link>
@@ -30,7 +25,7 @@ const RoomListAllCategory = props => {
 
       <section className='mt-5 container'>
         <h2>Westend</h2>
-        <ul className='row mb-5'>
+        <ul className='row mb-5 room-list'>
             <RoomList category='Westend' />
         </ul>
         <Link to='/westend' className='btn btn-danger'>View All</Link>
@@ -39,15 +34,4 @@ const RoomListAllCategory = props => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-      rooms: state.rooms
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  {
-      ftechRooms
-  }
-)(RoomListAllCategory);
+export default RoomListAllCategory;

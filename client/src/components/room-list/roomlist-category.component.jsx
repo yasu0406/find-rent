@@ -1,8 +1,6 @@
-import React, {useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { ftechRooms } from '../../redux/rooms/rooms.action';
 
 import RoomList from './room-list';
 import SideBar from '../side-bar/side-bar.component';
@@ -12,9 +10,6 @@ const RoomListCategory = props => {
     if (!categoryTitle || typeof categoryTitle !== 'string') return categoryTitle;
     return categoryTitle.charAt(0).toUpperCase() + categoryTitle.slice(1).toLowerCase();
   };
-  useEffect(() => {
-    props.ftechRooms();
-  },[]); 
 
   return (
     <>
@@ -31,16 +26,4 @@ const RoomListCategory = props => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-      rooms: state.rooms
-  }
-}
-
-
-export default connect(
-  mapStateToProps,
-  {
-      ftechRooms
-  }
-)(withRouter(RoomListCategory));
+export default withRouter(RoomListCategory);
