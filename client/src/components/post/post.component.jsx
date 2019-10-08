@@ -12,6 +12,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './post.styles.scss';
 
 const Post= ({onCancel, user, submitRoom}) => {
+    console.log(user.photoURL);
     const [roomInfo, setRoomInfo] = useState({
         title:'',
         area:'',
@@ -26,14 +27,15 @@ const Post= ({onCancel, user, submitRoom}) => {
         landry: '',
         parking: true,
         pet: false,
-        img1: `${process.env.PUBLIC_URL}/images/default-img.png`,
-        img2: `${process.env.PUBLIC_URL}/images/default-img.png`,
-        img3: `${process.env.PUBLIC_URL}/images/default-img.png`,
-        img4: `${process.env.PUBLIC_URL}/images/default-img.png`,
-        img5: `${process.env.PUBLIC_URL}/images/default-img.png`,
+        img1: '',
+        img2: '',
+        img3: '',
+        img4: '',
+        img5: '',
         userInfo: {
             userId: user.id,
             userName: user.displayName,
+            userPhoto: user.photoURL? user.photoURL : `${process.env.PUBLIC_URL}/images/user-default-img.png`,
             userEmail: user.email
         }
     });
@@ -110,35 +112,35 @@ const Post= ({onCancel, user, submitRoom}) => {
                     </div> 
                     <ul className='row mt-5 mb-5'>
                         <li className='col-md-4'> 
-                             <img src={roomInfo.img1} alt='upload-image' className='process__image' />
+                             <img src={roomInfo.img1 ? roomInfo.img1: `${process.env.PUBLIC_URL}/images/default-img.png`} alt='upload-image' className='process__image' />
                              <div className='custom-file'>
                                 <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img1:files.base64.toString()})}} />
                                 <label className='custom-file-label' htmlFor='customFile01'>Choose file</label>
                              </div>
                         </li>
                         <li className='col-md-4'> 
-                             <img src={roomInfo.img2} alt='upload-image' className='process__image' />
+                             <img src={roomInfo.img2 ? roomInfo.img2: `${process.env.PUBLIC_URL}/images/default-img.png`} alt='upload-image' className='process__image' />
                              <div className='custom-file'>
                                 <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img2:files.base64.toString()})}} />
                                 <label className='custom-file-label' htmlFor='customFile03'>Choose file</label>
                              </div>
                         </li>
                         <li className='col-md-4'> 
-                             <img src={roomInfo.img3} alt='upload-image' className='process__image' />
+                             <img src={roomInfo.img3 ? roomInfo.img3: `${process.env.PUBLIC_URL}/images/default-img.png`} alt='upload-image' className='process__image' />
                              <div className='custom-file'>
                                 <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img3:files.base64.toString()})}} />
                                 <label className='custom-file-label' htmlFor='customFile04'>Choose file</label>
                              </div>
                         </li>
                         <li className='col-md-4'> 
-                             <img src={roomInfo.img4} alt='upload-image' className='process__image' />
+                             <img src={roomInfo.img4 ? roomInfo.img4: `${process.env.PUBLIC_URL}/images/default-img.png`} alt='upload-image' className='process__image' />
                              <div className='custom-file'>
                                 <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img4:files.base64.toString()})}} />
                                 <label className='custom-file-label' htmlFor='customFile'>Choose file</label>
                              </div>
                         </li>
                         <li className='col-md-4'> 
-                             <img src={roomInfo.img5} alt='upload-image' className='process__image' />
+                             <img src={roomInfo.img5 ? roomInfo.img5: `${process.env.PUBLIC_URL}/images/default-img.png`} alt='upload-image' className='process__image' />
                              <div className='custom-file'>
                                 <FileBase type='file' multiple={false} onDone={(files) => {setRoomInfo({...roomInfo,img5:files.base64.toString()})}} />
                                 <label className='custom-file-label' htmlFor='customFile'>Choose file</label>
