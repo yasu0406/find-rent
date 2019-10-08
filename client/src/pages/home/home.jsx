@@ -21,7 +21,7 @@ const Home = props => {
         <>
         <div className='main-visual'>
             <div className='container'>
-                <div className='contact-form'>
+                <div className='search-form'>
                 <h2>Find Rooms</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
