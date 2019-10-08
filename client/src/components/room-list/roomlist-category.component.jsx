@@ -13,10 +13,10 @@ const RoomListCategory = props => {
 
   return (
     <>
-      <section className='mt-5 row container'>
+      <section className='row container rooms-section'>
         <div className='col-md-10'>
           <h2>{chanedTitleChar(props.match.params.category)}</h2>
-          <ul className='row mb-5 room-list'>
+          <ul className='row room-list'>
               <RoomList areaCategoryName={props.match.params.category} />
           </ul>
         </div>

@@ -7,25 +7,25 @@ const RoomListAllCategory = () => {
 
   return (
     <>
-      <section className='mt-5 container'>
+      <section className='container rooms-section'>
         <h2>Downtown</h2>
-        <ul className='row mb-5 room-list'>
+        <ul className='row room-list'>
             <RoomList category='Downtown' />
         </ul>
         <Link to='/downtown' className='btn btn-danger'>View All</Link>
         </section>
 
-      <section className='mt-5 container'>
+      <section className='container rooms-section'>
         <h2>Robson</h2>
-        <ul className='row mb-5 room-list'>
+        <ul className='row room-list'>
             <RoomList category='Robson' />
         </ul>
         <Link to='/downtown' className='btn btn-danger'>View All</Link>
       </section>
 
-      <section className='mt-5 container'>
+      <section className='container rooms-section'>
         <h2>Westend</h2>
-        <ul className='row mb-5 room-list'>
+        <ul className='row room-list'>
             <RoomList category='Westend' />
         </ul>
         <Link to='/westend' className='btn btn-danger'>View All</Link>
