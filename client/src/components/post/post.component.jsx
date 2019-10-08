@@ -12,7 +12,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './post.styles.scss';
 
 const Post= ({onCancel, user, submitRoom}) => {
-    console.log(user.photoURL);
     const [roomInfo, setRoomInfo] = useState({
         title:'',
         area:'',
