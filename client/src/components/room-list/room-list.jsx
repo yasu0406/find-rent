@@ -9,12 +9,8 @@ import './room-list.styles.scss';
 const RoomList = (props) => {
     useEffect(()=> {
         props.fetchRooms();
-        console.log(props);
     },[]);
     if(props.rooms.rooms) {
-        props.rooms.rooms.sort((a,b) => {
-            return (a.atDate > b.atDate ? 1 : -1);
-        });
         if(props.category) {
             return props.rooms.rooms.filter((room) => props.category == room.area).filter((room, idx) => idx < 4).map(room => {
                 const title = room.title;

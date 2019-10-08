@@ -5,21 +5,32 @@ module.exports = app => {
 
     app.get('/api/get', (request, response) => {
       Room.find({}, (err, rooms) => {
-        if (err) response.status(500).send()
-        else response.status(200).send(rooms)
-      })
+        try {
+          rooms.sort((a,b) => {
+            return (a.atDate < b.atDate ? 1 : -1);
+          });
+          response.status(200).send(rooms);
+        } catch(err) {
+          response.status(500).send();
+          console.log(err.message);
+        }
+      });
     });
 
     app.post('/api/get-detail/:id', (request, response) => {
       Room.find({'_id': request.body.roomID}, (err, room) => {
-        if (err) response.status(500).send()
-        else response.status(200).send(room)
-      })
+        try {
+          response.status(200).send(room);
+        } catch(err) {
+          response.status(500).send();
+          console.log(err.message);
+        }
+      });
     });
 
     app.post('/api/post', (request, response) => {
       const {title, area, describe, price, available, houseType, roomSize, roomType, bath, availableSmoke, landry, parking, pet, img1, img2, img3, img4, img5, userInfo} = request.body.roomInfo;
-      const {userId, userName, userEmail} = userInfo;
+      const {userId, userName, userEmail, userPhoto} = userInfo;
       const url = title;
       url.replace(/\s+/g, "");
       const room = new Room({
@@ -45,7 +56,8 @@ module.exports = app => {
         userInfo: {
           userId,
           userName,
-          userEmail
+          userEmail,
+          userPhoto
         }
       });
       try{
