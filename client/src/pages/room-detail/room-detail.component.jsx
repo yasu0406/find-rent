@@ -10,9 +10,6 @@ import './room-detail.styles.scss';
 
 const RoomDetail = (props) => {
     console.log(props);
-    if(props.room) {
-        console.log(props.room.length);
-    }
     useEffect(() => {    
         props.fetchRoomDetail(props.match.params.id);
         return () => {
@@ -21,7 +18,7 @@ const RoomDetail = (props) => {
     },[]);
 
     if(props.room && props.room.length != 0) {
-        const {title, area, describe, price, available, houseType, roomSize, roomType, bath, availableSmoke, landry, parking, pet, img1, img2, img3, img4, img5, userInfo} = props.room[0];
+        const {title, area, describe, street, price, available, houseType, roomSize, roomType, bath, availableSmoke, landry, parking, img1, img2, img3, img4, img5, userInfo, amenities} = props.room[0];
 
         return(
             <>
@@ -47,29 +44,53 @@ const RoomDetail = (props) => {
                 </div>
             </div>
             <div className='container room-info'>
-                <section>
+                <section className='room-titles'>
                     <div className='row'>
-                        <div className='col-md-10'>
-                            <h2>{title}</h2>
-                            <p>{area}</p>
-                        </div>
-                        <div className='col-md-2 user-avator'>
+                        <div className='col-md-2 order-md-2 user-avator'>
                             <img src={userInfo.userPhoto? userInfo.userPhoto : `${process.env.PUBLIC_URL}/images/user-default-img.png`} alt={userInfo.userName}/>
                             <p>{userInfo.userName}</p>
                         </div>
+                        <div className='col-md-10 order-md-1'>
+                            <h2>{title}</h2>
+                            <p>{area}</p>
+                        </div>
                     </div>
-                    <div>
-                        <dl>
+                    <div className='row'>
+                        <dl className='col-md-3'>
                             <dt>
-                                Private room in apartment
+                                Room Size
                             </dt>
                             <dd>
                                 {roomSize}
                             </dd>
                         </dl>
-                        <dl>
+                        <dl className='col-md-3'>
                             <dt>Location</dt>
                             <dd>Monmouth Ave</dd>
+                        </dl>
+                        <dl className='col-md-3'>
+                            <dt>Hose Type</dt>
+                            <dd>{houseType}</dd>
+                        </dl>
+                        <dl className='col-md-3'>
+                            <dt>Room Type</dt>
+                            <dd>{roomType}</dd>
+                        </dl>
+                        <dl className='col-md-3'>
+                            <dt>Hose Type</dt>
+                            <dd>{houseType}</dd>
+                        </dl>
+                        <dl className='col-md-3'>
+                            <dt>Bath</dt>
+                            <dd>{bath}</dd>
+                        </dl>
+                        <dl className='col-md-3'>
+                            <dt>Smoke</dt>
+                            <dd>{availableSmoke ? 'Yes' : 'No'}</dd>
+                        </dl>
+                        <dl className='col-md-3'>
+                            <dt>Parking</dt>
+                            <dd>{parking ? 'Yes' : 'No'}</dd>
                         </dl>
                     </div>
                 </section>
@@ -82,19 +103,24 @@ const RoomDetail = (props) => {
                     </div>
                 </section>
                     
-                <section>
+                <section className='room-amenities'>
                     <div>
                         <h2>Amenities</h2>
-
+                        <ul className='row'>
+                            {amenities.wifi ? <li className='col-lg-2'>WI-FI</li> : ''}
+                            {amenities.water ? <li className='col-lg-2'>Water</li> : ''}
+                            {amenities.pet ? <li className='col-lg-2'>Pet-Friendly</li> : ''}
+                            {amenities.gym ? <li className='col-lg-2'>Gym</li> : ''}
+                        </ul>
                     </div>
                 </section>    
                 
                 <section>
                     <div>
                         <h2>The neighborhood</h2>
-
+                        <iframe src={`http://maps.google.co.jp/maps?q=${street}&output=embed`} width="100%" height="400" allowfullscreen frameborder="0"></iframe>
                     </div>
-                </section>     
+                </section>
             </div>
             </>
         );
