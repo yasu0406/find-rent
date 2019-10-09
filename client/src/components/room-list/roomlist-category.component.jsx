@@ -13,14 +13,14 @@ const RoomListCategory = props => {
 
   return (
     <>
-      <section className='row container rooms-section'>
-        <div className='col-md-10'>
+      <section className='container rooms-section'>
+        <div>
           <h2>{chanedTitleChar(props.match.params.category)}</h2>
           <ul className='row room-list'>
               <RoomList areaCategoryName={props.match.params.category} />
           </ul>
         </div>
-        <SideBar />
+        {/* <SideBar /> */}
         </section>
     </>
   )
