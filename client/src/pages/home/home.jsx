@@ -12,7 +12,9 @@ const Home = props => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setAreaCategoryName(e.target.value);
-        props.history.push(`/${areaCategoryName}`);
+        if(areaCategoryName != e.target.value) {
+            props.history.push(`/${areaCategoryName}`);
+        }
     }
     const handleChange = (e) => {
         setAreaCategoryName(e.target.value);
