@@ -15,6 +15,7 @@ const Post= ({onCancel, user, submitRoom}) => {
     const [roomInfo, setRoomInfo] = useState({
         title:'',
         area:'',
+        street:'',
         describe: '',
         price: 0,
         available: new Date(),
@@ -25,7 +26,6 @@ const Post= ({onCancel, user, submitRoom}) => {
         availableSmoke: true,
         landry: '',
         parking: true,
-        pet: false,
         img1: '',
         img2: '',
         img3: '',
@@ -36,16 +36,26 @@ const Post= ({onCancel, user, submitRoom}) => {
             userName: user.displayName,
             userPhoto: user.photoURL? user.photoURL : `${process.env.PUBLIC_URL}/images/user-default-img.png`,
             userEmail: user.email
+        },
+        amenities: {
+            wifi: false,
+            water: false,
+            pet: false,
+            gym: false
         }
     });
     const postHandleSubmit = event => {
         event.preventDefault();
         submitRoom(roomInfo, onCancel);
     };    
-    const handleInput = () => {
+    const handleInput = (event) => {
+        const { name, checked } = event.target
         setRoomInfo({
             ...roomInfo,
-            pet: !roomInfo.pet
+            amenities: {
+                ...roomInfo.amenities,
+                [name]: checked
+            }
         });
     };
     const handleDate = date => {
@@ -81,7 +91,7 @@ const Post= ({onCancel, user, submitRoom}) => {
                                 required
                             />
                         </li>
-                        <li className='col-md-4'>
+                        <li className='col-md-2'>
                             <h3><label htmlFor='area'>Area*</label></h3>
                             <select
                                 name='area' 
@@ -96,6 +106,18 @@ const Post= ({onCancel, user, submitRoom}) => {
                                 <option value='Robson'>Robson</option>
                                 <option value='Westend'>Westend</option> 
                             </select>
+                        </li>
+                        <li className='col-md-2'>
+                            <h3><label htmlFor='street'>Street*</label></h3>
+                            <FormInput
+                                id='street'
+                                name='street'
+                                type='text'
+                                handleChange={handleChange}
+                                value={roomInfo.street}
+                                placeholder='Street'
+                                required
+                            />
                         </li>
                     </ul>   
                     <div className='description-area'>
@@ -395,17 +417,44 @@ const Post= ({onCancel, user, submitRoom}) => {
                                 </li>   
                             </ul>
                         </li>
-                        <li className='col-md-5'>
+                        <li className='col-md-5 options'>
                             <h3>Options</h3>
                             <ul>
                                 <li>
-                                    Pet:
                                     <input
+                                        id='wifi'
+                                        name='wifi'
+                                        type='checkbox'
+                                        checked={roomInfo.amenities.wifi === true}
+                                        onChange={handleInput} />
+                                    <label htmlFor="wifi">Wifi</label>
+                                </li>
+                                <li>
+                                    <input
+                                        id='water'
+                                        name='water'
+                                        type='checkbox'
+                                        checked={roomInfo.amenities.water === true}
+                                        onChange={handleInput} />
+                                    <label htmlFor="water">Water</label>
+                                </li>
+                                <li>
+                                    <input
+                                        id='pet'
                                         name='pet'
                                         type='checkbox'
-                                        value='true'
-                                        checked={roomInfo.pet === true}
+                                        checked={roomInfo.amenities.pet === true}
                                         onChange={handleInput} />
+                                    <label htmlFor="pet">Pet</label>
+                                </li>
+                                <li>
+                                    <input
+                                        id='gym'
+                                        name='gym'
+                                        type='checkbox'
+                                        checked={roomInfo.amenities.gym === true}
+                                        onChange={handleInput} />
+                                    <label htmlFor='gym'>Gym</label>
                                 </li>
                             </ul>
                         </li>

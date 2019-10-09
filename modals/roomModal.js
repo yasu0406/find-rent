@@ -6,6 +6,7 @@ const roomsSchema = new Schema({
     atDate: String,
     title: String,
     area: String,
+    street: String,
     postal: String,
     describe: String,
     price: Number,
@@ -16,7 +17,6 @@ const roomsSchema = new Schema({
     availableSmoke: Boolean,
     landry: String,
     parking: Boolean,
-    pet: Boolean,
     img1: String,
     img2: String,
     img3: String,
@@ -25,7 +25,14 @@ const roomsSchema = new Schema({
     userInfo: {
         userId: String,
         userName: String,
-        userEmail: String
+        userEmail: String,
+        userPhoto: String
+    },
+    amenities: {
+        wifi: Boolean,
+        water: Boolean,
+        c: Boolean,
+        gym: Boolean
     }
 });
 
