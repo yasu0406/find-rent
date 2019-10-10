@@ -9,7 +9,6 @@ import 'react-responsive-carousel/lib/styles/carousel.css';
 import './room-detail.styles.scss';
 
 const RoomDetail = (props) => {
-    console.log(props);
     useEffect(() => {    
         props.fetchRoomDetail(props.match.params.id);
         return () => {
@@ -122,7 +121,7 @@ const RoomDetail = (props) => {
                 <section>
                     <div>
                         <h2>The neighborhood</h2>
-                        <iframe src={`http://maps.google.co.jp/maps?q=${street}&output=embed`} width="100%" height="400" allowfullscreen frameborder="0"></iframe>
+                        <iframe src={`http://maps.google.co.jp/maps?q=${street}&output=embed`} width="100%" height="400" allowFullScreen frameBorder="0"></iframe>
                     </div>
                 </section>
             </div>
@@ -137,7 +136,6 @@ const RoomDetail = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.rooms.roomDetail);
     return {
         room: state.rooms.roomDetail
     }
