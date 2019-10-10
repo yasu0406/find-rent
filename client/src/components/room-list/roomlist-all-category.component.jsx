@@ -20,7 +20,7 @@ const RoomListAllCategory = () => {
         <ul className='row room-list'>
             <RoomList category='Robson' />
         </ul>
-        <Link to='/downtown' className='btn btn-danger'>View All</Link>
+        <Link to='/robson' className='btn btn-danger'>View All</Link>
       </section>
 
       <section className='container rooms-section'>
