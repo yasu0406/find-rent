@@ -34,6 +34,8 @@ module.exports = app => {
       const {wifi, water, pet, gym} = amenities;
       const url = title;
       url.replace(/\s+/g, "");
+      let strDate = available;
+      let availableDate = strDate.split('T');
       const room = new Room({
         atDate: new Date(),
         title,
@@ -41,7 +43,7 @@ module.exports = app => {
         street,
         describe,
         price,
-        available,
+        available:availableDate[0],
         houseType,
         roomSize,
         roomType,
