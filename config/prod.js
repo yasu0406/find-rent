@@ -2,5 +2,6 @@
 // dev.js - don't commit this!!
 module.exports = {
     mongoURI: process.env.MONGO_URI,
-    cookieKey: process.env.COOKIE_KEY
-};
+    cookieKey: process.env.COOKIE_KEY,
+    redirectDomain:process.env.REDIRECT_DOMAIN
+};  
