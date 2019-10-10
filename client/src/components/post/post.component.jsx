@@ -18,7 +18,7 @@ const Post= ({onCancel, user, submitRoom}) => {
         street:'',
         describe: '',
         price: 0,
-        available: new Date(),
+        available: '',
         roomSize: '',
         houseType: 'shearhouse',
         roomType: 'privateRoom',
