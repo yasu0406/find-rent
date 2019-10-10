@@ -92,6 +92,10 @@ const RoomDetail = (props) => {
                             <dt>Parking</dt>
                             <dd>{parking ? 'Yes' : 'No'}</dd>
                         </dl>
+                        <dl className='col-md-3'>
+                            <dt>Available</dt>
+                            <dd>{available}</dd>
+                        </dl>
                     </div>
                 </section>
                     
