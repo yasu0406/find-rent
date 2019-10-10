@@ -17,7 +17,7 @@ node_modules
 .env.development.local
 .env.test.local
 .env.production.local
-client/dev.js
+client/src/config/dev.js
 config/dev.js
 
 npm-debug.log*
