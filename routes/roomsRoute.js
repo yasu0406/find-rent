@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Room = mongoose.model('rooms');
 
 module.exports = app => {
-  app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-
     app.get('/api/get', (request, response) => {
       Room.find({}, (err, rooms) => {
         try {
