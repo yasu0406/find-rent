@@ -3,7 +3,7 @@ const Room = mongoose.model('rooms');
 
 module.exports = app => {
   app.get('/*', function(req, res) {
-    res.sendFile('path to index.html');
+    res.sendFile('./client/public/index.html');
   });
 
     app.get('/api/get', (request, response) => {
