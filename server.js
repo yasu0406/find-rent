@@ -21,9 +21,8 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 require('./routes/roomsRoute')(app);
 
 if (process.env.NODE_ENV === 'production') {
-    // Serve any static files
     app.use(express.static(path.join(__dirname, 'client/build')));
-  // Handle React routing, return all requests to React app
+    const path = require('path');
     app.get('*', function(req, res) {
       res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
