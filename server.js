@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 bodyParser = require('body-parser');
 require('./modals/roomModal');
 
-mongoose.connect('mongodb+srv://yasu4646:yk908447@cluster0-kbh4s.mongodb.net/find?retryWrites=true&w=majority');
+mongoose.connect('');
 
 const app = express();
 
