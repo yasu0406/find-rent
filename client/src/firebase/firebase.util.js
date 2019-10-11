@@ -3,13 +3,6 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-    apiKey: "AIzaSyCCImeJumftjlTu-l8Wpey5kCb3DOy5oVs",
-    authDomain: "find-19b2c.firebaseapp.com",
-    databaseURL: "https://find-19b2c.firebaseio.com",
-    projectId: "find-19b2c",
-    storageBucket: "find-19b2c.appspot.com",
-    messagingSenderId: "23825691849",
-    appId: "1:23825691849:web:16f9bbd636f82916990918"
 }
 
 firebase.initializeApp(config);
