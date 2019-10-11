@@ -1,10 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const keys = require('./config/keys');
 bodyParser = require('body-parser');
 require('./modals/roomModal');
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect('mongodb+srv://yasu4646:yk908447@cluster0-kbh4s.mongodb.net/find?retryWrites=true&w=majority');
 
 const app = express();
 
@@ -12,7 +11,6 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 require('./routes/roomsRoute')(app);
-
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
