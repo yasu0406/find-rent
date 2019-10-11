@@ -13,13 +13,13 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 require('./routes/roomsRoute')(app);
 
+
 if (process.env.NODE_ENV === 'production') {
-    const path = require('path')
-    // Serve static files from the React frontend app
-    app.use(express.static(path.join(__dirname, 'client/build')))
-    // Anything that doesn't match the above, send back index.html
+    app.use(express.static('client/build'));
+
+    const path = require('path');
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname + '/client/build/index.html'))
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
 
