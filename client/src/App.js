@@ -46,13 +46,14 @@ class App extends React.Component {
     console.log('OK');
     return (
       <>
-      <Header currentUser={this.state.currentUser} />
+      <div>TEST</div>
+      {/* <Header currentUser={this.state.currentUser} />
         <div className='wrraper'>
           <Route exact path='/' component={Home} />
           <Route exact path='/:category' component={Home} />
           <Route exact path='/room-detail/:id' component={RoomDetail} />
         </div>
-      <Footer />
+      <Footer /> */}
     </>
     );
   }
