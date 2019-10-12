@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 bodyParser = require('body-parser');
 require('./modals/roomModal');
 
-mongoose.connect('');
+mongoose.connect('mongodb+srv://yasu4646:yk908447@cluster0-kbh4s.mongodb.net/find?retryWrites=true&w=majority');
 
 const app = express();
+
+console.log('OK');
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
