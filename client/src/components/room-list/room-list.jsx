@@ -11,7 +11,6 @@ const RoomList = (props) => {
         props.fetchRooms();
     },[]);
     if(props.rooms.rooms) {
-        Object.values(props.rooms.rooms);
         if(props.category) {
             return props.rooms.rooms.filter((room) => props.category == room.area).filter((room, idx) => idx < 4).map(room => {
                 const title = room.title;
@@ -65,7 +64,7 @@ const RoomList = (props) => {
             
         }
     } else {
-        
+        return <div>Loding...</div>
     }
 }
 const mapStateToProps = state => {
