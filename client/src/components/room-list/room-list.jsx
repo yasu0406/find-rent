@@ -64,7 +64,7 @@ const RoomList = (props) => {
             
         }
     } else {
-        return <div>Loding...</div>
+        return <div className='col-12'>Loding...</div>
     }
 }
 const mapStateToProps = state => {

@@ -121,7 +121,7 @@ const RoomDetail = (props) => {
                 <section>
                     <div>
                         <h2>The neighborhood</h2>
-                        <iframe src={`http://maps.google.co.jp/maps?q=${street}&output=embed`} width="100%" height="400" allowFullScreen frameBorder="0"></iframe>
+                        <iframe src={`https://maps.google.co.jp/maps?q=${street}&output=embed`} width="100%" height="400" allowFullScreen frameBorder="0"></iframe>
                     </div>
                 </section>
             </div>
