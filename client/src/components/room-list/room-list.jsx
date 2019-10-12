@@ -9,7 +9,7 @@ import './room-list.styles.scss';
 const RoomList = (props) => {
     useEffect(()=> {
         props.fetchRooms();
-    },[]);
+    },[props.rooms.rooms]);
     if(props.rooms.rooms) {
         if(props.category) {
             return Object.values(props.rooms.rooms).filter((room) => props.category == room.area).filter((room, idx) => idx < 4).map(room => {
