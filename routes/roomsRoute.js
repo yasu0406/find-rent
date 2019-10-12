@@ -6,7 +6,7 @@ module.exports = app => {
       Room.find({}, (err, rooms) => {
         try {
           rooms.sort((a,b) => {
-            return (a.atDate < b.atDate ? 1 : -1);
+            return (a.atDate > b.atDate ? 1 : -1);
           });
           response.status(200).send(rooms);
         } catch(err) {
