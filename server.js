@@ -1,9 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const keys = require('./config/keys');
 bodyParser = require('body-parser');
 require('./modals/roomModal');
 
-mongoose.connect('mongodb+srv://yasu4646:yk908447@cluster0-kbh4s.mongodb.net/find?retryWrites=true&w=majority');
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 
