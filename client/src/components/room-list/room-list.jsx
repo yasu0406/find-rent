@@ -11,9 +11,8 @@ const RoomList = (props) => {
         props.fetchRooms();
     },[]);
     if(props.rooms.rooms) {
-        Object.values(props.rooms.rooms);
         if(props.category) {
-            return props.rooms.rooms.filter((room) => props.category == room.area).filter((room, idx) => idx < 4).map(room => {
+            return Object.values(props.rooms.rooms).filter((room) => props.category == room.area).filter((room, idx) => idx < 4).map(room => {
                 const title = room.title;
                 const sliceTitle = title.length > 30 ? title.slice(0, 30) + '…' : title;
                 return (
@@ -30,7 +29,7 @@ const RoomList = (props) => {
             )
         } else {
             if(props.areaCategoryName == 'all') {
-                return props.rooms.rooms.map(room => {
+                return Object.values(props.rooms.rooms).map(room => {
                     const title = room.title;
                     const sliceTitle = title.length > 30 ? title.slice(0, 30) + '…' : title;
                     return (
@@ -46,7 +45,7 @@ const RoomList = (props) => {
                     }
                 )
             } else {
-                return props.rooms.rooms.filter((room) => room.area.toLowerCase().includes(props.areaCategoryName)).map(room => {
+                return Object.values(props.rooms.rooms).filter((room) => room.area.toLowerCase().includes(props.areaCategoryName)).map(room => {
                     const title = room.title;
                     const sliceTitle = title.length > 30 ? title.slice(0, 30) + '…' : title;
                     return (
