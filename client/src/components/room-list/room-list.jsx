@@ -68,6 +68,7 @@ const RoomList = (props) => {
     }
 }
 const mapStateToProps = state => {
+    console.log(state.rooms);
     return {
         rooms: state.rooms
     }
