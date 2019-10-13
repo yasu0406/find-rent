@@ -8,8 +8,8 @@ mongoose.connect(keys.mongoURI, {
     useMongoClient: true,
     autoReconnect: false,
     keepAlive: false,
-    connectTimeoutMS: 300000,
-    socketTimeoutMS: 300000
+    connectTimeoutMS: 600000,
+    socketTimeoutMS: 600000
 }, (err) => {
     console.log(err.message);
 });
