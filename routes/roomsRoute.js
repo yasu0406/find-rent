@@ -69,13 +69,12 @@ module.exports = app => {
       }
       });
       try{
-          const dataSave = () => {
-            async () => {
-              room.save();
-            } 
-            await Room.find({}, (err, rooms) => {  
-              response.status(200).send(rooms)
-            });
+          const dataSave = async () => {
+            await room.save().then(
+              Room.find({}, (err, rooms) => {  
+                response.status(200).send(rooms)
+              })
+            );
           }
         } catch(err) {
             response.status(500).send();
