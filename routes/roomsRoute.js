@@ -70,12 +70,21 @@ module.exports = app => {
       });
       try{
         room.save();
-        Room.find({}, (err, rooms) => {  
-          response.status(200).send(rooms)
-        })
+        response.status(200).send();
         } catch(err) {
             response.status(500).send();
         } 
+        Room.find({}, (err, rooms) => {
+          try {
+            rooms.sort((a,b) => {
+              return (a.atDate > b.atDate ? 1 : -1);
+            });
+            response.status(200).send(rooms);
+          } catch(err) {
+            response.status(500).send();
+            console.log(err.message);
+          }
+        });
       });
 
 }
