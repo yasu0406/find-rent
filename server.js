@@ -4,11 +4,17 @@ const keys = require('./config/keys');
 bodyParser = require('body-parser');
 require('./modals/roomModal');
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, {
+    useMongoClient: true,
+    autoReconnect: false,
+    keepAlive: false,
+    connectTimeoutMS: 300000,
+    socketTimeoutMS: 300000
+}, (err) => {
+    console.log(err.message);
+});
 
 const app = express();
-
-console.log('OK');
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
