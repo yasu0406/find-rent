@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
-import {submitRoom} from '../../redux/rooms/rooms.action';
+import {submitRoom, fetchRooms} from '../../redux/rooms/rooms.action';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import FileBase from 'react-file-base64';

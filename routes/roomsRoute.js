@@ -3,18 +3,18 @@ const Room = mongoose.model('rooms');
 
 module.exports = app => {
     app.get('/api/get', (request, response) => {
-      Room.find({}, (err, rooms) => {
-        try {
-          rooms.sort((a,b) => {
-            return (a.atDate > b.atDate ? 1 : -1);
-          });
-          response.status(200).send(rooms);
-        } catch(err) {
-          response.status(500).send();
-          console.log(err.message);
-        }
+        Room.find({}, (err, rooms) => {
+          try {
+            rooms.sort((a,b) => {
+              return (a.atDate > b.atDate ? 1 : -1);
+            });
+            response.status(200).send(rooms);
+          } catch(err) {
+            response.status(500).send();
+            console.log(err.message);
+          }
+        });
       });
-    });
 
     app.post('/api/get-detail/:id', (request, response) => {
       Room.find({'_id': request.body.roomID}, (err, room) => {
@@ -69,8 +69,14 @@ module.exports = app => {
       }
       });
       try{
-        room.save();
-        response.status(200).send();
+          const dataSave = async () => {
+            await room.save();
+          }
+          dataSave().then(() => {
+            Room.find({}, (err, rooms) => {  
+              response.status(200).send(rooms)
+            });
+          }, 1500);
         } catch(err) {
             response.status(500).send();
         } 

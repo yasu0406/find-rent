@@ -9,7 +9,6 @@ import './room-list.styles.scss';
 const RoomList = (props) => {
     useEffect(()=> {
         props.fetchRooms();
-        console.log(props.rooms.rooms);
     },[]);
     if(props.rooms.rooms) {
         if(props.category) {
