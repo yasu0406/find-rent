@@ -10,7 +10,7 @@ const RoomList = (props) => {
     useEffect(()=> {
         props.fetchRooms();
         console.log(props.rooms.rooms);
-    },[props.rooms.rooms]);
+    },[]);
     if(props.rooms.rooms) {
         if(props.category) {
             return Object.values(props.rooms.rooms).filter((room) => props.category == room.area).filter((room, idx) => idx < 4).map(room => {
