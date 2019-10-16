@@ -2,17 +2,15 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
-import keys from '../config/keys';
-import { ar } from 'date-fns/locale';
 
 const config = {
-    apiKey: keys.REACT_APP_API_KEY,
-    authDomain: keys.REACT_APP_AUTH_DOMAIN,
-    databaseURL: keys.REACT_APP_DATABASE_URL,  
-    projectId: keys.REACT_APP_PROJECT_ID,
-    storageBucket: keys.REACT_APP_STORAGE_BUCKET,
-    messagingSenderId: keys.REACT_APP_MESSAGING_SENDER_ID,
-    appId: keys.REACT_APP_APP_ID
+    apiKey: "AIzaSyCCImeJumftjlTu-l8Wpey5kCb3DOy5oVs",
+    authDomain: "find-19b2c.firebaseapp.com",
+    databaseURL: "https://find-19b2c.firebaseio.com",
+    projectId: "find-19b2c",
+    storageBucket: "find-19b2c.appspot.com",
+    messagingSenderId: "23825691849",
+    appId: "1:23825691849:web:16f9bbd636f82916990918"
 }
 
 firebase.initializeApp(config);
