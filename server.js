@@ -4,15 +4,7 @@ const keys = require('./config/keys');
 bodyParser = require('body-parser');
 require('./modals/roomModal');
 
-mongoose.connect(keys.mongoURI, {
-    useMongoClient: true,
-    autoReconnect: false,
-    keepAlive: false,
-    connectTimeoutMS: 1000000,
-    socketTimeoutMS: 1000000
-}, (err) => {
-    console.log(err.message);
-});
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const roomsSchema = new Schema({
+    roomId: String,
     atDate: String,
     title: String,
     area: String,
@@ -18,11 +19,6 @@ const roomsSchema = new Schema({
     availableSmoke: Boolean,
     landry: String,
     parking: Boolean,
-    img1: String,
-    img2: String,
-    img3: String,
-    img4: String,
-    img5: String,
     userInfo: {
         userId: String,
         userName: String,
@@ -34,7 +30,14 @@ const roomsSchema = new Schema({
         water: Boolean,
         c: Boolean,
         gym: Boolean
-    }
+    },
+    imgUrl: {
+        img1: String,
+        img2: String,
+        img3: String,
+        img4: String,
+        img5: String
+      }
 });
 
 mongoose.model('rooms', roomsSchema);

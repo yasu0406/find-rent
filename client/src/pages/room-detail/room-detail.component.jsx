@@ -17,7 +17,9 @@ const RoomDetail = (props) => {
     },[]);
 
     if(props.room && props.room.length != 0) {
-        const {title, area, describe, street, price, available, houseType, roomSize, roomType, bath, availableSmoke, landry, parking, img1, img2, img3, img4, img5, userInfo, amenities} = props.room[0];
+        const {title, area, describe, street, price, available, houseType, roomSize, roomType, bath, availableSmoke, landry, parking, userInfo} = props.room[0];
+        const {img1, img2, img3, img4, img5} = props.room[0].imgUrl;
+        const {wifi, water, pet, gym} = props.room[0].amenities;
 
         return(
             <>
@@ -52,6 +54,7 @@ const RoomDetail = (props) => {
                         <div className='col-md-10 order-md-1'>
                             <h2>{title}</h2>
                             <p>{area}</p>
+                            <h3>${price}</h3>
                         </div>
                     </div>
                     <div className='row'>
@@ -84,6 +87,10 @@ const RoomDetail = (props) => {
                             <dd>{bath}</dd>
                         </dl>
                         <dl className='col-md-3'>
+                            <dt>Landry</dt>
+                            <dd>{landry}</dd>
+                        </dl>
+                        <dl className='col-md-3'>
                             <dt>Smoke</dt>
                             <dd>{availableSmoke ? 'Yes' : 'No'}</dd>
                         </dl>
@@ -110,10 +117,10 @@ const RoomDetail = (props) => {
                     <div>
                         <h2>Amenities</h2>
                         <ul className='row'>
-                            {amenities.wifi ? <li className='col-lg-2'>WI-FI</li> : ''}
-                            {amenities.water ? <li className='col-lg-2'>Water</li> : ''}
-                            {amenities.pet ? <li className='col-lg-2'>Pet-Friendly</li> : ''}
-                            {amenities.gym ? <li className='col-lg-2'>Gym</li> : ''}
+                            {wifi ? <li className='col-lg-2'>WI-FI</li> : ''}
+                            {water ? <li className='col-lg-2'>Water</li> : ''}
+                            {pet ? <li className='col-lg-2'>Pet-Friendly</li> : ''}
+                            {gym ? <li className='col-lg-2'>Gym</li> : ''}
                         </ul>
                     </div>
                 </section>    
@@ -121,7 +128,7 @@ const RoomDetail = (props) => {
                 <section>
                     <div>
                         <h2>The neighborhood</h2>
-                        <iframe src={`https://maps.google.co.jp/maps?q=${street}&output=embed`} width="100%" height="400" allowFullScreen frameBorder="0"></iframe>
+                        <iframe src={`http://maps.google.co.jp/maps?q=${street}&output=embed`} width="100%" height="400" allowFullScreen frameBorder="0"></iframe>
                     </div>
                 </section>
             </div>
