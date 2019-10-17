@@ -42,16 +42,22 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 export const createRoomImage = async (images, roomId) => {
     const arryImage = [];
+    await firebase.storage().ref(`images/${roomId}/img01`).put(images.img1.file);
+    await firebase.storage().ref(`images/${roomId}/img02`).put(images.img2.file);
+    await firebase.storage().ref(`images/${roomId}/img03`).put(images.img3.file);
+    await firebase.storage().ref(`images/${roomId}/img04`).put(images.img4.file);
+    await firebase.storage().ref(`images/${roomId}/img05`).put(images.img5.file);
     await Promise.all(
-        Object.values(images).map( async (img) => {
-            await firebase.storage().ref(`images/${roomId}/${img.file.name}`).put(img.file);
+        Object.values(images).map( async (img, idx) => {
+            idx += 1;
+            // await firebase.storage().ref(`images/${roomId}/img0${idx}`).put(images[`img${idx}`].file);
             await firebase.storage()
                     .ref(`images/${roomId}`)
-                    .child(img.file.name)
+                    .child(`img0${idx}`)
                     .getDownloadURL()
                     .then(url => {
                         arryImage.push(url);
-                    })
+                    })        
         })
     );
     return arryImage;
