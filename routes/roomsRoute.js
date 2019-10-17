@@ -36,6 +36,16 @@ module.exports = app => {
       url.replace(/\s+/g, "");
       let strDate = available;
       let availableDate = strDate.split('T');
+
+      for(let i = 1; i < request.body.arryImage.length; i++) {
+        console.log(i);
+        if(request.body.arryImage[i].indexOf('img0' + i) > -1) {
+          console.log(request.body.arryImage[i]);
+        } else if(request.body.arryImage[i].indexOf('img0' + i) > 0) {
+          
+        }
+      }
+
       const room = new Room({
         atDate: new Date(),
         roomId,

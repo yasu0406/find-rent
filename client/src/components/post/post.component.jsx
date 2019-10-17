@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createRoomImage } from '../../firebase/firebase.util';
@@ -12,7 +12,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import './post.styles.scss';
 
-const Post= ({onCancel, user, submitRoom}) => {
+const Post= ({onCancel, user, submitRoom, fetchRooms}) => {
+    useEffect(() => {
+        return fetchRooms;
+    },[]);
     const [roomInfo, setRoomInfo] = useState({
         roomId:uuidv4(),
         title:'',
@@ -472,9 +475,16 @@ const Post= ({onCancel, user, submitRoom}) => {
     );
 };
 
+const mapStateToProps = state => {
+    return {
+        rooms: state.rooms
+    }
+}
+
 export default connect(
     null,
     {
-        submitRoom
+        submitRoom,
+        fetchRooms
     }
 )(withRouter(Post));

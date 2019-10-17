@@ -47,10 +47,10 @@ export const createRoomImage = async (images, roomId) => {
     await firebase.storage().ref(`images/${roomId}/img03`).put(images.img3.file);
     await firebase.storage().ref(`images/${roomId}/img04`).put(images.img4.file);
     await firebase.storage().ref(`images/${roomId}/img05`).put(images.img5.file);
+    let idx = 0;
     await Promise.all(
-        Object.values(images).map( async (img, idx) => {
+        Object.values(images).map( async () => {
             idx += 1;
-            // await firebase.storage().ref(`images/${roomId}/img0${idx}`).put(images[`img${idx}`].file);
             await firebase.storage()
                     .ref(`images/${roomId}`)
                     .child(`img0${idx}`)

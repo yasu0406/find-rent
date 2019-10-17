@@ -73,7 +73,7 @@ const mapStateToProps = state => {
     return {
         rooms: state.rooms
     }
-  }
+}
   
 export default connect(
     mapStateToProps,
