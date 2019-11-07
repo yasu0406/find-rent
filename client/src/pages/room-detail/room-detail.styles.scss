@@ -1,4 +1,17 @@
 .carousel-wrap {
+    position: relative;
+    > ul {
+        position: absolute;
+        z-index: 100;
+        top: 30px;
+        right: 30px;
+        li {
+            display: inline-block;
+            &:first-child {
+                margin-right: 10px;   
+            }
+        }
+    }
     .carousel {
         .slide {
             div {

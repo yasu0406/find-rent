@@ -4,13 +4,7 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 const config = {
-    apiKey: "AIzaSyCCImeJumftjlTu-l8Wpey5kCb3DOy5oVs",
-    authDomain: "find-19b2c.firebaseapp.com",
-    databaseURL: "https://find-19b2c.firebaseio.com",
-    projectId: "find-19b2c",
-    storageBucket: "find-19b2c.appspot.com",
-    messagingSenderId: "23825691849",
-    appId: "1:23825691849:web:16f9bbd636f82916990918"
+
 }
 
 firebase.initializeApp(config);
@@ -62,6 +56,19 @@ export const createRoomImage = async (images, roomId) => {
     );
     return arryImage;
 };
+
+export const saveRoomInUser = async (roomId) => {
+    await auth.onAuthStateChanged(async userAuth => {
+        if (userAuth) {
+            const userRef = firestore.doc(`users/${userAuth.uid}`);
+            try {
+                await userRef.update({savelist:firebase.firestore.FieldValue.arrayUnion(roomId)});
+            } catch(error) {
+                console.log(error.message);
+            }
+        }
+      });
+}
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
