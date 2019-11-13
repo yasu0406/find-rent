@@ -114,6 +114,10 @@ const Post= ({onCancel, user, submitRoom, fetchRooms}) => {
                                 <option value='Downtown'>Downtown</option>
                                 <option value='Robson'>Robson</option>
                                 <option value='Westend'>Westend</option> 
+                                <option value='EastVancouver'>EastVancouver</option>
+                                <option value='Kitsilano'>Kitsilano</option>
+                                <option value='Richmond'>Richmond</option>
+                                <option value='Burnaby'>Burnaby</option>
                             </select>
                         </li>
                         <li className='col-md-2'>

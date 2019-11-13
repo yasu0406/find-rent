@@ -13,7 +13,8 @@ const Home = props => {
         e.preventDefault();
         setAreaCategoryName(e.target.value);
         if(areaCategoryName != e.target.value) {
-            props.history.push(`/${areaCategoryName}`);
+            let url = `/category/${areaCategoryName}`;
+            props.history.push(url);
         }
     }
     const handleChange = (e) => {
@@ -39,6 +40,10 @@ const Home = props => {
                             <option value="downtown">Downtown</option>
                             <option value="robson">Robson</option>
                             <option value="westend">Westend</option>
+                            <option value='eastvancouver'>EastVancouver</option>
+                            <option value='kitsilano'>Kitsilano</option>
+                            <option value='richmond'>Richmond</option>
+                            <option value='burnaby'>Burnaby</option>
                         </select>
                     </div>
                     <CustomButton type='submit' className='btn btn-danger'>Serach</CustomButton>
@@ -47,7 +52,7 @@ const Home = props => {
             </div>
         </div>
         <Route exact path='/' component={RoomListAllCategory} />
-        <Route exact path='/:category' component={() => <RoomListCategory areaCategoryName={areaCategoryName} />} />
+        <Route exact path='/category/:category' component={() => <RoomListCategory areaCategoryName={areaCategoryName} />} />
         </>
     );
 }
