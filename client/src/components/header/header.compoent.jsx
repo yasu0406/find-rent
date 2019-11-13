@@ -55,6 +55,7 @@ const Header = (props) => {
                         dropDown ? 
                         <ul className='user-drop-down'>
                             <li className='nav-item nav-link' onClick={() => {auth.signOut()} } >Logout</li>
+                            <li className='nav-item nav-link'><Link to='/save-list' currentUser={props.currentUser}>Saved Rooms</Link></li>
                         </ul> 
                         : ''
                     }

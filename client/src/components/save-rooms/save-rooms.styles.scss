@@ -1,0 +1,38 @@
+.saved-section {
+    margin-top: 50px;
+    .room-list {
+        li {
+            margin-bottom: 30px;
+        }
+        h3 {
+            margin: 5px 0;
+            font-size: 1.5rem;
+        }
+        a {
+            color: #212529;
+            &:hover {
+                color: unset;
+            }
+        }
+    }
+    .thumb-nail {
+        height: 150px;
+        margin-bottom: 10px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+        @media screen and (max-width: 1024px) {
+            height: 100px;
+        }
+        @media screen and (max-width:768px) {
+            height: 400px;
+        }
+        @media screen and (max-width: 468px) {
+            height: 250px;
+        }
+    }
+}
+.row.rooms-section {
+    padding: 0;
+}

@@ -6,6 +6,7 @@ import { auth, createUserProfileDocument } from './firebase/firebase.util';
 import Header from './components/header/header.compoent';
 import Home from './pages/home/home';
 import RoomDetail from './pages/room-detail/room-detail.component';
+import SaveList from './pages/save-list/save-list';
 import Footer from './components/footer/footer.component';
 
 class App extends React.Component {
@@ -48,8 +49,9 @@ class App extends React.Component {
       <Header currentUser={this.state.currentUser} />
         <div className='wrraper'>
           <Route exact path='/' component={Home} />
-          <Route exact path='/:category' component={Home} />
-          <Route exact path='/room-detail/:id' component={RoomDetail} />
+          <Route exact path='/category/:category' component={Home} />
+          <Route exact path='/rooms/room-detail/:id' component={RoomDetail} />
+          <Route exact path='/save-list' component={() => <SaveList  currentUser={this.state.currentUser} />} />
         </div>
       <Footer />
     </>
