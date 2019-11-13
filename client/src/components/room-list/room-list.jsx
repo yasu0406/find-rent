@@ -17,7 +17,7 @@ const RoomList = (props) => {
                 const sliceTitle = title.length > 30 ? title.slice(0, 30) + '…' : title;
                 return (
                     <li className='col-md-3' key={room._id}>
-                        <Link to={`room-detail/${room._id}`}>
+                        <Link to={`/rooms/room-detail/${room._id}`}>
                             <div className='thumb-nail' style={{backgroundImage: `url(${room.imgUrl.img1 ? room.imgUrl.img1: process.env.PUBLIC_URL + '/images/default-img.png'})`}}></div>
                             <p>{room.roomSize}</p>
                             <h3>{sliceTitle}</h3>
@@ -27,14 +27,14 @@ const RoomList = (props) => {
                     )
                 }
             )
-        } else {
+        } else if(props.areaCategoryName) {
             if(props.areaCategoryName == 'all') {
                 return props.rooms.rooms.map(room => {
                     const title = room.title;
                     const sliceTitle = title.length > 30 ? title.slice(0, 30) + '…' : title;
                     return (
                         <li className='col-md-3' key={room._id}>
-                            <Link to={`room-detail/${room._id}`}>
+                            <Link to={`/rooms/room-detail/${room._id}`}>
                                 <div className='thumb-nail' style={{backgroundImage: `url(${room.imgUrl.img1 ? room.imgUrl.img1: process.env.PUBLIC_URL + '/images/default-img.png'})`}}></div>
                                 <p>{room.roomSize}</p>
                                 <h3>{sliceTitle}</h3>
@@ -50,7 +50,7 @@ const RoomList = (props) => {
                     const sliceTitle = title.length > 30 ? title.slice(0, 30) + '…' : title;
                     return (
                         <li className='col-md-3' key={room._id}>
-                            <Link to={`room-detail/${room._id}`}>
+                            <Link to={`/rooms/room-detail/${room._id}`}>
                                 <div className='thumb-nail' style={{backgroundImage: `url(${room.imgUrl.img1 ? room.imgUrl.img1: process.env.PUBLIC_URL + '/images/default-img.png'})`}}></div>
                                 <p>{room.roomSize}</p>
                                 <h3>{sliceTitle}</h3>
@@ -61,7 +61,22 @@ const RoomList = (props) => {
                     }
                 )
             }
-            
+        } else {
+            return props.rooms.rooms.map(room => {
+                const title = room.title;
+                const sliceTitle = title.length > 30 ? title.slice(0, 30) + '…' : title;
+                return (
+                    <li className='col-md-3' key={room._id}>
+                        <Link to={`/rooms/room-detail/${room._id}`}>
+                            <div className='thumb-nail' style={{backgroundImage: `url(${room.imgUrl.img1 ? room.imgUrl.img1: process.env.PUBLIC_URL + '/images/default-img.png'})`}}></div>
+                            <p>{room.roomSize}</p>
+                            <h3>{sliceTitle}</h3>
+                            <p>${room.price}</p>
+                        </Link>
+                    </li>
+                    )
+                }
+            )
         }
     } else {
         return (
