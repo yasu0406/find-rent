@@ -31,8 +31,7 @@ const RoomDetail = (props) => {
             <div>
                 <div className='carousel-wrap'>
                     <ul className=''>
-                        <li><button>Shear</button></li>
-                        <li><button onClick={() => {saveRoom()}}>Save</button></li>
+                        <li><button className='btn btn-success' onClick={() => {saveRoom()}}>Save</button></li>
                     </ul>
                     <Carousel showArrows={true} autoPlay={true} emulateTouch={true} stopOnHover={false} transitionTime={1000} infiniteLoop={true} interval={5000}>
                         <div style={{backgroundImage: `url(${img1 ? img1: process.env.PUBLIC_URL + '/images/default-img.png'})`}}>
