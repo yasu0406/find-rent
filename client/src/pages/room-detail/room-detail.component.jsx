@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {fetchRoomDetail} from '../../redux/rooms/rooms.action';
 import {saveRoomInUser} from '../../firebase/firebase.util';
 
+import Spinner from '../../components/spinner/spinner.component';
 import { Carousel } from 'react-responsive-carousel';
 
 import 'react-responsive-carousel/lib/styles/carousel.css';
@@ -144,7 +145,7 @@ const RoomDetail = (props) => {
         );
     } else {
         return (
-            <div>Loading</div>
+            <Spinner />
         )
     }
     
