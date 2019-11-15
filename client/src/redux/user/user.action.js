@@ -16,3 +16,18 @@ export const fetchUser = () => async dispatch => {
       });
 }
 
+export const fetchUserId = () => async dispatch => {
+    await auth.onAuthStateChanged(async userAuth => {
+        if (userAuth) {
+            const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+            const snapShot = await userRef.get();
+            try {
+                await dispatch({type: userActionTypes.FETCHUSERID, payload: snapShot.id});
+            } catch(error) {
+                console.log(error.message);
+            }
+        }
+      });
+}
+

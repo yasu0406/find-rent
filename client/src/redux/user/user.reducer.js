@@ -1,7 +1,8 @@
 import userActionTypes from './userActionTypes';
 
 const INITIAL_STATE = {
-    user: null
+    user: null,
+    userId: null
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 user: action.payload
+            }
+        case userActionTypes.FETCHUSERID:
+            return {
+                ...state.userId,
+                userId: action.payload
             }
         default:
             return state;

@@ -1,5 +1,6 @@
 const userActionTypes = {
-    FETCHUSER :'FETCHUSER'
+    FETCHUSER :'FETCHUSER',
+    FETCHUSERID :'FETCHUSERID'
 }
 
 export default userActionTypes
