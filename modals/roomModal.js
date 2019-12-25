@@ -28,7 +28,7 @@ const roomsSchema = new Schema({
     amenities: {
         wifi: Boolean,
         water: Boolean,
-        c: Boolean,
+        pet: Boolean,
         gym: Boolean
     },
     imgUrl: {
