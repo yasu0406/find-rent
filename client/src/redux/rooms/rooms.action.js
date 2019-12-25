@@ -22,5 +22,5 @@ export const submitRoom = (roomInfo, arryImage, onCancel) => async dispatch => {
 export const editRoom = (roomInfo, arryImage, history) => async dispatch => {
     const res = await axios.post('/api/edit', {roomInfo, arryImage});
     dispatch({type: RoomActionTypes.FETCH_ROOMS, payload: res.data});
-    history.push('/posted-list');
+    if(history) history.push('/posted-list');
 }

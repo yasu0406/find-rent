@@ -10,7 +10,7 @@ const EditPost = (props) => {
     },[]);
     if(props.room) {
         return (
-            <EditPostForm roomId={props.match.params.id} roomInfo={props.room[0]}/>
+            <EditPostForm roomId={props.match.params.id} roomInfo={props.room[0]} history={props.history}/>
         )
     } else {
         return<Spinner />;    
