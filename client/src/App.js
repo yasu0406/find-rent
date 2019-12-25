@@ -8,6 +8,7 @@ import Home from './pages/home/home';
 import RoomDetail from './pages/room-detail/room-detail.component';
 import SaveList from './pages/save-list/save-list';
 import PostedList from './pages/posted-list/posted-list';
+import EditPost from './pages/edit-post/edit-post';
 import Footer from './components/footer/footer.component';
 
 class App extends React.Component {
@@ -54,6 +55,7 @@ class App extends React.Component {
           <Route exact path='/rooms/room-detail/:id' component={RoomDetail} />
           <Route exact path='/save-list' component={SaveList} />
           <Route exact path='/posted-list' component={PostedList} />
+          <Route exact path='/edit-post/:id' component={EditPost} />
         </div>
       <Footer />
     </>
