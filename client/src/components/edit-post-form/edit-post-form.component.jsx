@@ -1,13 +1,17 @@
 import React, {useState, useEffect} from 'react';
+import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+import {updateRoomImage} from '../../firebase/firebase.util';
 import DatePicker from 'react-datepicker';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import FileBase from 'react-file-base64';
 import 'react-datepicker/dist/react-datepicker.css';
-import Spinner from '../../components/spinner/spinner.component';
+import {editRoom} from '../../redux/rooms/rooms.action';
 
 const EditPostForm = (props) => {
     const [roomInfo, setRoomInfo] = useState({
+        roomId:'',
         title:'',
         area:'',
         street:'',
@@ -37,11 +41,12 @@ const EditPostForm = (props) => {
     });
     useEffect(() => {
         if(props.roomInfo) {
-            const {title, area, describe, street, price, available, houseType, roomSize, roomType, bath, availableSmoke, landry, parking, userInfo} = props.roomInfo;
+            const {roomId, title, area, describe, street, price, available, houseType, roomSize, roomType, bath, availableSmoke, landry, parking, userInfo} = props.roomInfo;
             const {img1, img2, img3, img4, img5} = props.roomInfo.imgUrl;
             const {wifi, water, pet, gym} = props.roomInfo.amenities;
             setRoomInfo({
                 ...roomInfo,
+                roomId,
                 title,
                 area,
                 street,
@@ -73,7 +78,8 @@ const EditPostForm = (props) => {
     },[props.roomInfo]);
     const postHandleSubmit = async event => {
         event.preventDefault();
-        // const arryImage = await createRoomImage(roomInfo.images, roomInfo.roomId);
+        const arryImage = await updateRoomImage(roomInfo.images, roomInfo.roomId);
+        props.editRoom(roomInfo, arryImage, props.history);
     };    
     const checkSelect = () => {
         const areaList = ['Downtown','Robson','Westend','EastVancouver','Kitsilano','Richmond','Burnaby'];
@@ -112,8 +118,9 @@ const EditPostForm = (props) => {
     };
 
     return(
-        <div className='post-form'>
+        <div id='myModal' className='modal-form post-form'>
             <div className='modal-content'>
+                <Link to='/posted-list' className='close mb-5'>&times;</Link>
                 <form onSubmit={postHandleSubmit}>
                     <ul className='mb-5 row'>
                         <li className='col-md-8'>
@@ -493,11 +500,16 @@ const EditPostForm = (props) => {
                             </ul>
                         </li>
                     </ul>
-                    <CustomButton type='submit'>Post</CustomButton> 
+                    <CustomButton type='submit'>Edit</CustomButton> 
                 </form>
             </div>
         </div>
     )
 };
 
-export default EditPostForm;
+export default connect(
+    null,
+    {
+        editRoom
+    }
+)(EditPostForm);

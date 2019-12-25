@@ -37,14 +37,14 @@ module.exports = app => {
       let strDate = available;
       let availableDate = strDate.split('T');
 
-      for(let i = 1; i < request.body.arryImage.length; i++) {
-        console.log(i);
-        if(request.body.arryImage[i].indexOf('img0' + i) > -1) {
-          console.log(request.body.arryImage[i]);
-        } else if(request.body.arryImage[i].indexOf('img0' + i) > 0) {
+      // for(let i = 1; i < request.body.arryImage.length; i++) {
+      //   console.log(i);
+      //   if(request.body.arryImage[i].indexOf('img0' + i) > -1) {
+      //     console.log(request.body.arryImage[i]);
+      //   } else if(request.body.arryImage[i].indexOf('img0' + i) > 0) {
           
-        }
-      }
+      //   }
+      // }
 
       const room = new Room({
         atDate: new Date(),
@@ -88,6 +88,53 @@ module.exports = app => {
         } catch(err) {
             response.status(500).send();
         } 
+      }); 
+
+      app.post('/api/edit', (request, response) => {
+        const {roomId, title, area, street, describe, price, available, houseType, roomSize, roomType, bath, availableSmoke, landry, parking, amenities} = request.body.roomInfo;
+        const {wifi, water, pet, gym} = amenities;
+        const url = title;
+        url.replace(/\s+/g, "");
+        let strDate = available;
+        let availableDate = strDate.split('T');
+        const room = {
+          atDate: new Date(),
+          title,
+          area,
+          street,
+          describe,
+          price,
+          available:availableDate[0],
+          houseType,
+          roomSize,
+          roomType,
+          bath,
+          availableSmoke,
+          landry,
+          parking,
+          amenities: {  
+            wifi,
+            water,
+            pet,
+            gym
+          },
+          imgUrl: {
+            img1: request.body.arryImage[0],
+            img2: request.body.arryImage[1],
+            img3: request.body.arryImage[2],
+            img4: request.body.arryImage[3],
+            img5: request.body.arryImage[4]
+          }
+        }
+        console.log(request.body.roomInfo);
+        Room.findOneAndUpdate({'roomId': roomId},room, (err) => {
+          try {
+            response.status(200).send();
+          } catch(err) {
+            response.status(500).send();
+            console.log(err.message);
+          }
+        });
       });
 
 }
