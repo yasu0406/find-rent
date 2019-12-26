@@ -36,7 +36,7 @@ const SaveRooms = (props) => {
                                         )
                                     } else if(!room) {
                                         return(
-                                            <li className='col-12'><h3>Nothing posted yet</h3></li>
+                                            <li className='col-12'><h3>Nothing save room yet</h3></li>
                                         )
                                     }
                                 });
