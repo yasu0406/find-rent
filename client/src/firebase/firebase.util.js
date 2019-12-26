@@ -60,8 +60,42 @@ export const createRoomImage = async (images, roomId) => {
                     })        
         })
     );
+    
     return arryImage;
 };
+
+export const updateRoomImage = async (images, roomId) => {
+    const arryImage = [];
+    if(images.img1.file) {
+        await firebase.storage().ref(`images/${roomId}/img01`).put(images.img1.file);
+    }
+    if(images.img2.file) {
+        await firebase.storage().ref(`images/${roomId}/img02`).put(images.img2.file);
+    }
+    if(images.img3.file) {
+        await firebase.storage().ref(`images/${roomId}/img03`).put(images.img3.file);
+    }
+    if(images.img4.file) {
+        await firebase.storage().ref(`images/${roomId}/img04`).put(images.img4.file);
+    }
+    if(images.img5.file) {
+        await firebase.storage().ref(`images/${roomId}/img05`).put(images.img5.file);
+    }
+    let idx = 0;
+    await Promise.all(
+        Object.values(images).map( async () => {
+            idx += 1;
+            await firebase.storage()
+                    .ref(`images/${roomId}`)
+                    .child(`img0${idx}`)
+                    .getDownloadURL()
+                    .then(url => {
+                        arryImage.push(url);
+                    })        
+        })
+    );
+    return arryImage;
+}
 
 export const saveRoomInUser = async (roomId) => {
     await auth.onAuthStateChanged(async userAuth => {
