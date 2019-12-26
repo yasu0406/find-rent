@@ -57,7 +57,8 @@ export const createRoomImage = async (images, roomId) => {
                     .getDownloadURL()
                     .then(url => {
                         arryImage.push(url);
-                    })        
+                    }) 
+           arryImage.sort();       
         })
     );
     
@@ -82,6 +83,7 @@ export const updateRoomImage = async (images, roomId) => {
         await firebase.storage().ref(`images/${roomId}/img05`).put(images.img5.file);
     }
     let idx = 0;
+    console.log(firebase.storage().ref(`images/${roomId}`).child(`img01`));
     await Promise.all(
         Object.values(images).map( async () => {
             idx += 1;
@@ -91,9 +93,11 @@ export const updateRoomImage = async (images, roomId) => {
                     .getDownloadURL()
                     .then(url => {
                         arryImage.push(url);
-                    })        
+                    });
+                    arryImage.sort();      
         })
     );
+    console.log(arryImage);
     return arryImage;
 }
 
