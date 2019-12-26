@@ -34,7 +34,7 @@ const SaveRooms = (props) => {
                                             </Link>
                                         </li>
                                         )
-                                    } else {
+                                    } else if(!room) {
                                         return(
                                             <li className='col-12'><h3>Nothing posted yet</h3></li>
                                         )
