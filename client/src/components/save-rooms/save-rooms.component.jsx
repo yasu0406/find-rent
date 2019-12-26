@@ -33,16 +33,22 @@ const SaveRooms = (props) => {
                                                 <p>${room.price}</p>
                                             </Link>
                                         </li>
-                                    )
-                                }
-                            });
+                                        )
+                                    } else {
+                                        return(
+                                            <li className='col-12'><h3>Nothing posted yet</h3></li>
+                                        )
+                                    }
+                                });
                             }
                         )
                     }
                 </ul>
             )
         } else {
-            return <h3>Nothing saved yet</h3>
+            return(
+                <div><h3>Nothing posted yet</h3></div>
+            )
         }
     } else {
         return <Spinner />
