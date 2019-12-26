@@ -47,7 +47,7 @@ const SaveRooms = (props) => {
             )
         } else {
             return(
-                <div><h3>Nothing posted yet</h3></div>
+                <div><h3>Nothing save room yet</h3></div>
             )
         }
     } else {
